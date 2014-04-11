@@ -4,7 +4,7 @@
 
 	<groupId>gov.va.oia</groupId>
 	<artifactId>HK2Utilities</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<name>HK2Utilities</name>
@@ -36,7 +36,9 @@
 		<dependency>
 			<groupId>eu.infomas</groupId>
 			<artifactId>annotation-detector</artifactId>
-			<version>3.0.3</version>
+			<!-- See  https://github.com/rmuller/infomas-asl/issues/17-->
+			<!-- Patched here  https://github.com/darmbrust/infomas-asl-->
+			<version>3.0.3-danPatch-1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
