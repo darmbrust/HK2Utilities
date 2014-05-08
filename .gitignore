@@ -9,3 +9,5 @@
 *.ear
 /.classpath
 /.project
+/.idea
+
