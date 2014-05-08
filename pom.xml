@@ -36,9 +36,7 @@
 		<dependency>
 			<groupId>eu.infomas</groupId>
 			<artifactId>annotation-detector</artifactId>
-			<!-- See  https://github.com/rmuller/infomas-asl/issues/17-->
-			<!-- Patched here  https://github.com/darmbrust/infomas-asl-->
-			<version>3.0.3-danPatch-1</version>
+			<version>3.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
