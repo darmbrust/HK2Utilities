@@ -4,7 +4,7 @@
 
 	<groupId>gov.va.oia</groupId>
 	<artifactId>HK2Utilities</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<packaging>jar</packaging>
 
 	<name>HK2Utilities</name>
