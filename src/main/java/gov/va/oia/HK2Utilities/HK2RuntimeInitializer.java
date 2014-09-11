@@ -48,8 +48,8 @@ public class HK2RuntimeInitializer
 	 * Scan the requested packages on the classpath for HK2 'Service' and 'Contract' annotated classes.
 	 * Load the metadata for those classes into the HK2 Service Locator.
 	 * 
-	 * This implementation should support all Annotations that are supported by HK2 - however - note that it is
-	 * impacted by this bug at the moment:  https://java.net/jira/browse/HK2-187
+	 * This implementation should support all Annotations that are supported by HK2 - however - if you are using 
+	 * HK2 older than 2.3.0 - note that it is impacted by this bug:  https://java.net/jira/browse/HK2-187
 	 * 
 	 * For an implementation that is not impacted by that bug, see {@link HK2RuntimeInitializerCustom}
 	 * 
@@ -96,7 +96,7 @@ public class HK2RuntimeInitializer
 			ServiceLocatorFactory factory = ServiceLocatorFactory.getInstance();
 			locator = factory.create(serviceLocatorName);
 		}
-		//TODO see when this gets fixed - https://java.net/jira/browse/HK2-187
+
 		for (ActiveDescriptor<?> ad : ServiceLocatorUtilities.addClasses(locator, ac.getAnnotatedClasses()))
 		{
 			log.debug("Added " + ad.toString());

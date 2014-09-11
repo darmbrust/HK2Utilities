@@ -46,6 +46,17 @@ import eu.infomas.annotation.AnnotationDetector;
  * relies on having the maven-tool generated file.
  * 
  * This utility alleviates those issues by allowing HK2 to be configured at runtime.
+ * 
+ * 
+ * ***************
+ * 
+ * If you are using HK2 2.3.0 or newer, you should instead use {@link HK2RuntimeInitializer}!
+ * 
+ * This class only exists as a workaround to a bug in older versions of HK2.
+ * https://java.net/jira/browse/HK2-187
+ * 
+ * ***************
+ * 
  *
  * @author <a href="mailto:daniel.armbrust.list@gmail.com">Dan Armbrust</a> 
  */
@@ -75,6 +86,8 @@ public class HK2RuntimeInitializerCustom
 	 *  Any other annotations that are supported by HK2 are not yet supported by this utility.
 	 *  Note that {@link HK2RuntimeInitializer} doesn't have these limitations, but does suffer from
 	 *  https://java.net/jira/browse/HK2-187
+	 *  
+	 *  If you are using HK2 2.3.0 or newer, you should prefer {@link HK2RuntimeInitializer} 
 	 * 
 	 * @see org.glassfish.hk2.api.ServiceLocatorFactory#create(String)
 	 * @see ServiceLocatorUtilities#createAndPopulateServiceLocator(String)
