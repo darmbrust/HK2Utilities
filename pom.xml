@@ -9,6 +9,18 @@
 
 	<name>HK2Utilities</name>
 
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>Copyright Notice
+                This is a work of the U.S. Government and is not subject to copyright
+                protection in the United States. Foreign copyrights may apply.
+			</comments>
+		</license>
+	</licenses>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -18,10 +30,25 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.3</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>external.atlassian.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+				<version>1.0-m4.3</version>
+				<configuration>
+					<pushReleases>true</pushReleases>
+					<scmCommentPrefix>[jgitflow-plugin]</scmCommentPrefix>
+					<enableSshAgent>true</enableSshAgent>
+					<enableFeatureVersions>true</enableFeatureVersions>
+					<flowInitContext>
+						<masterBranchName>master</masterBranchName>
+						<developBranchName>develop</developBranchName>
+					</flowInitContext>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -31,7 +58,7 @@
 		<dependency>
 			<groupId>org.glassfish.hk2</groupId>
 			<artifactId>hk2</artifactId>
-			<version>2.3.0</version>
+			<version>2.4.0-b16</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.infomas</groupId>
@@ -41,20 +68,20 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.7</version>
+			<version>1.7.12</version>
 		</dependency>
 
 		<!-- Test only dependencies -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.7</version>
+			<version>1.7.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
