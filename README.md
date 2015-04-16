@@ -14,3 +14,7 @@ Note - with versions of HK2 prior to 2.3.0, the default code above is impacted b
 HK2RuntimeInitializerCustom - which is not impacted by this bug - but it has other limitations.  See the javadoc for details.
 
 With HK2 2.3.0 and newer, the alternate implementation / workaround is no longer necessary.
+
+
+Release command looks like:
+mvn jgitflow:release-start jgitflow:release-finish -DreleaseVersion=1.4 -DdevelopmentVersion=1.5-SNAPSHOT -DaltDeploymentRepository=maestro::default::https://va.maestrodev.com/archiva/repository/va-releases -DdefaultOriginUrl=https://github.com/Apelon-VA/HK2Utilities.git 
