@@ -23,6 +23,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<scm>
+		<url>https://github.com/VA-CTT/HK2Utilities.git</url>
+	</scm>
 
 	<build>
 		<plugins>
