@@ -27,6 +27,14 @@
 	<scm>
 		<url>https://github.com/VA-CTT/HK2Utilities.git</url>
 	</scm>
+	
+	<developers>
+		<developer>
+			<id>darmbrust</id>
+			<name>Dan Armbrust</name>
+			<email>daniel.armbrust.list@gmail.com</email>
+		</developer>
+	</developers>
 
 	<build>
 		<plugins>
