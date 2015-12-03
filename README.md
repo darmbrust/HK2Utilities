@@ -17,4 +17,4 @@ With HK2 2.3.0 and newer, the alternate implementation / workaround is no longer
 
 
 Release command looks like:
-mvn jgitflow:release-start jgitflow:release-finish -DreleaseVersion=1.4 -DdevelopmentVersion=1.5-SNAPSHOT -DaltDeploymentRepository=maestro::default::https://va.maestrodev.com/archiva/repository/va-releases -DdefaultOriginUrl=https://github.com/Apelon-VA/HK2Utilities.git 
+mvn jgitflow:release-start jgitflow:release-finish -DreleaseVersion=1.4.1 -DdevelopmentVersion=1.5-SNAPSHOT -PpublicRelease
