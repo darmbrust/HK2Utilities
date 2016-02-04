@@ -20,6 +20,9 @@ package gov.va.oia.HK2Utilities;
 
 import java.io.IOException;
 import org.glassfish.hk2.api.ActiveDescriptor;
+import org.glassfish.hk2.api.DynamicConfigurationService;
+import org.glassfish.hk2.api.MultiException;
+import org.glassfish.hk2.api.Populator;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.api.ServiceLocatorFactory;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
@@ -45,6 +48,15 @@ public class HK2RuntimeInitializer
 	static Logger log = LoggerFactory.getLogger(HK2RuntimeInitializer.class);
 	
 	/**
+	 * calls {@link #init(String, ServiceLocator, boolean, String...)} with the (ServiceLocator parentServiceLocator) set to null.
+	 */
+	public static ServiceLocator init(String serviceLocatorName, boolean readInhabitantFiles, String ... packageNames) 
+			throws IOException, ClassNotFoundException 
+	{
+		return init(serviceLocatorName, null, readInhabitantFiles, packageNames);
+	}
+	
+	/**
 	 * Scan the requested packages on the classpath for HK2 'Service' and 'Contract' annotated classes.
 	 * Load the metadata for those classes into the HK2 Service Locator.
 	 * 
@@ -56,7 +68,8 @@ public class HK2RuntimeInitializer
 	 * @see org.glassfish.hk2.api.ServiceLocatorFactory#create(String)
 	 * @see ServiceLocatorUtilities#createAndPopulateServiceLocator(String)
 	 * 
-	 * @param serviceLocatorName - The name of the ServiceLocator to find (or create if it doesn't yet exist)  
+	 * @param serviceLocatorName - The name of the ServiceLocator to find (or create if it doesn't yet exist)
+	 * @param parentServiceLocator - The parent service locator - may be null. 
 	 * @param readInhabitantFiles - Read and process inhabitant files before doing the classpath scan.  Annotated items
 	 * found during the scan will override items found in the inhabitant files, if they collide.  
 	 * @param packageNames -- The set of package names to scan recursively - for example - new String[]{"org.foo", "com.bar"}
@@ -70,7 +83,8 @@ public class HK2RuntimeInitializer
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public static ServiceLocator init(String serviceLocatorName, boolean readInhabitantFiles, String ... packageNames) throws IOException, ClassNotFoundException 
+	public static ServiceLocator init(String serviceLocatorName, ServiceLocator parentServiceLocator, boolean readInhabitantFiles, String ... packageNames) 
+			throws IOException, ClassNotFoundException 
 	{
 		AnnotatedClasses ac = new AnnotatedClasses();
 		
@@ -85,16 +99,22 @@ public class HK2RuntimeInitializer
 			cf.detect(packageNames);
 		}
 		
-		ServiceLocator locator = null;
-		
+		ServiceLocator locator = ServiceLocatorFactory.getInstance().create(serviceLocatorName, parentServiceLocator);
+
 		if (readInhabitantFiles)
 		{
-			locator = ServiceLocatorUtilities.createAndPopulateServiceLocator(serviceLocatorName);
-		}
-		else
-		{
-			ServiceLocatorFactory factory = ServiceLocatorFactory.getInstance();
-			locator = factory.create(serviceLocatorName);
+			//code borrowed from ServiceLocatorUtilities.createAndPopulateServiceLocator
+			DynamicConfigurationService dcs = locator.getService(DynamicConfigurationService.class);
+			Populator populator = dcs.getPopulator();
+	
+			try
+			{
+				populator.populate();
+			}
+			catch (IOException e)
+			{
+				throw new MultiException(e);
+			}
 		}
 
 		for (ActiveDescriptor<?> ad : ServiceLocatorUtilities.addClasses(locator, ac.getAnnotatedClasses()))

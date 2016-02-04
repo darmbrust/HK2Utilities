@@ -69,7 +69,7 @@ public class TestHK2Utils
 	@Test
 	public void testFullSearch() throws ClassNotFoundException, IOException 
 	{
-		ServiceLocator foo = HK2RuntimeInitializer.init("OtherName", false);
+		ServiceLocator foo = HK2RuntimeInitializer.init("OtherName", null, false);
 		ServiceLocator locator = ServiceLocatorFactory.getInstance().create("OtherName");
 		assertSame(foo, locator);
 		verify(locator);
