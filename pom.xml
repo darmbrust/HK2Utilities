@@ -114,6 +114,7 @@
 					<scmCommentPrefix>[jgitflow-plugin]</scmCommentPrefix>
 					<enableSshAgent>true</enableSshAgent>
 					<enableFeatureVersions>true</enableFeatureVersions>
+					<defaultOriginUrl>https://github.com/darmbrust/HK2Utilities.git</defaultOriginUrl>
 					<flowInitContext>
 						<masterBranchName>master</masterBranchName>
 						<developBranchName>develop</developBranchName>
