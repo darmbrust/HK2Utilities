@@ -1,22 +1,34 @@
-/**
- * Copyright Notice
+/*
+ * Copyright 2018 VetsEZ Inc, Sagebits LLC
  *
- * This is a work of the U.S. Government and is not subject to copyright 
- * protection in the United States. Foreign copyrights may apply.
- * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * Contributions from 2015-2017 where performed either by US government
+ * employees, or under US Veterans Health Administration contracts.
+ *
+ * US Veterans Health Administration contributions by government employees
+ * are work of the U.S. Government and are not subject to copyright
+ * protection in the United States. Portions contributed by government
+ * employees are USGovWork (17USC §105). Not subject to copyright.
+ * 
+ * Contribution by contractors to the US Veterans Health Administration
+ * during this period are contractually contributed under the
+ * Apache License, Version 2.0.
+ *
+ * See: https://www.usa.gov/government-works
  */
-package gov.va.oia.HK2Utilities;
+
+package net.sagebits.HK2Utilities;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -31,17 +43,17 @@ import org.slf4j.LoggerFactory;
 /**
  * AnnotatedClasses
  *
- * @author <a href="mailto:daniel.armbrust.list@gmail.com">Dan Armbrust</a> 
+ * @author <a href="mailto:daniel.armbrust.list@sagebits.net">Dan Armbrust</a>
  */
 public class AnnotatedClasses
 {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private Hashtable<String, ClassInfo> annotations = new Hashtable<>();
-	
+
 	protected void addAnnotation(Class<? extends Annotation> annotation, String className)
 	{
-		ClassInfo ci =  annotations.get(className);
+		ClassInfo ci = annotations.get(className);
 		if (ci == null)
 		{
 			ci = new ClassInfo(className);
@@ -49,7 +61,7 @@ public class AnnotatedClasses
 		}
 		ci.addAnnotation(annotation.getName());
 	}
-	
+
 	protected boolean isContract(String className)
 	{
 		ClassInfo ci = annotations.get(className);
@@ -59,7 +71,7 @@ public class AnnotatedClasses
 		}
 		return false;
 	}
-	
+
 	protected boolean isService(String className)
 	{
 		ClassInfo ci = annotations.get(className);
@@ -69,11 +81,11 @@ public class AnnotatedClasses
 		}
 		return false;
 	}
-	
+
 	public Class<?>[] getAnnotatedClasses() throws ClassNotFoundException
 	{
 		Class<?>[] result = new Class<?>[annotations.size()];
-		
+
 		int i = 0;
 		for (String className : annotations.keySet())
 		{
@@ -81,29 +93,30 @@ public class AnnotatedClasses
 		}
 		return result;
 	}
-	public List<DescriptorImpl> createDescriptors() throws ClassNotFoundException 
+
+	public List<DescriptorImpl> createDescriptors() throws ClassNotFoundException
 	{
 		ArrayList<DescriptorImpl> results = new ArrayList<>();
-		
+
 		for (ClassInfo ci : annotations.values())
 		{
 			if (ci.isService())
 			{
 				Class<?> c = Class.forName(ci.getName());
-				
+
 				DescriptorImpl di = new DescriptorImpl();
 				di.setImplementation(ci.getName());
-				
+
 				String name = null;
 				if (ci.hasAnnotation(Named.class.getName()))
 				{
-					name = ((Named)c.getAnnotation(Named.class)).value();
+					name = ((Named) c.getAnnotation(Named.class)).value();
 				}
 				if (name == null || name.length() == 0)
 				{
 					name = ci.getName().substring(ci.getName().lastIndexOf('.') + 1);
 				}
-				
+
 				di.setName(name);
 				di.addAdvertisedContract(ci.getName());
 
@@ -111,12 +124,12 @@ public class AnnotatedClasses
 				{
 					di.addAdvertisedContract(contract);
 				}
-				
+
 				for (String contract : getParentContracts(Class.forName(ci.getName()).getSuperclass()))
 				{
 					di.addAdvertisedContract(contract);
 				}
-				
+
 				String scope = ci.getScope();
 				if (scope != null)
 				{
@@ -126,7 +139,7 @@ public class AnnotatedClasses
 				{
 					di.setScope(Singleton.class.getName());
 				}
-				
+
 				if (ci.isProxyable())
 				{
 					di.setProxiable(true);
@@ -135,14 +148,14 @@ public class AnnotatedClasses
 				{
 					di.setProxiable(false);
 				}
-				
+
 				results.add(di);
 				log.debug("Created descriptor {}", di.toString());
 			}
 		}
 		return results;
 	}
-	
+
 	/**
 	 * for parent classes
 	 */
@@ -157,8 +170,7 @@ public class AnnotatedClasses
 		{
 			result.add(parentClass.getName());
 		}
-		
-		
+
 		for (String contract : getParentContracts(parentClass.getInterfaces()))
 		{
 			result.add(contract);
@@ -166,7 +178,7 @@ public class AnnotatedClasses
 		result.addAll(getParentContracts(parentClass.getSuperclass()));
 		return result;
 	}
-	
+
 	/**
 	 * For interfaces
 	 */
@@ -177,7 +189,7 @@ public class AnnotatedClasses
 		{
 			return result;
 		}
-		
+
 		for (Class<?> c : parentInterfaces)
 		{
 			if (isContract(c.getName()) || isService(c.getName()))
