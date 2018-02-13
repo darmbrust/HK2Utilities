@@ -15,6 +15,7 @@ HK2RuntimeInitializerCustom - which is not impacted by this bug - but it has oth
 
 With HK2 2.3.0 and newer, the alternate implementation / workaround is no longer necessary.
 
+[![Build Status](https://travis-ci.org/darmbrust/HK2Utilities.svg?branch=develop)](https://travis-ci.org/darmbrust/HK2Utilities)
 
 Release command looks like:
 
