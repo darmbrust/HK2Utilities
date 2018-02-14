@@ -1,7 +1,7 @@
 HK2Utilities
 ============
 
-[![Build Status](https://travis-ci.org/darmbrust/HK2Utilities.svg?branch=develop)](https://travis-ci.org/darmbrust/HK2Utilities)
+[![Build Status](https://travis-ci.org/darmbrust/HK2Utilities.svg?branch=develop)](https://travis-ci.org/darmbrust/HK2Utilities) [![Dependency Status](https://www.versioneye.com/user/projects/5a83a8a10fb24f7034ac6399/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5a83a8a10fb24f7034ac6399)
 
 Runtime scanning and initializing utilities for HK2 so you don't have to rely on hk2-locator/default files created by the inhabitant-generator.
 
