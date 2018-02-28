@@ -30,6 +30,8 @@
 package net.sagebits.HK2Utilities;
 
 import java.io.IOException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.hk2.api.ActiveDescriptor;
 import org.glassfish.hk2.api.DynamicConfigurationService;
 import org.glassfish.hk2.api.MultiException;
@@ -38,8 +40,6 @@ import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.api.ServiceLocatorFactory;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
 import org.jvnet.hk2.annotations.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import eu.infomas.annotation.AnnotationDetector;
 
 /**
@@ -56,7 +56,7 @@ import eu.infomas.annotation.AnnotationDetector;
  */
 public class HK2RuntimeInitializer
 {
-	static Logger log = LoggerFactory.getLogger(HK2RuntimeInitializer.class);
+	static Logger log = LogManager.getLogger(HK2RuntimeInitializer.class);
 
 	/**
 	 * calls {@link #init(String, ServiceLocator, boolean, String...)} with the (ServiceLocator parentServiceLocator) set to null.

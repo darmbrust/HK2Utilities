@@ -32,6 +32,8 @@ package net.sagebits.HK2Utilities;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.hk2.api.DynamicConfiguration;
 import org.glassfish.hk2.api.DynamicConfigurationService;
 import org.glassfish.hk2.api.PerLookup;
@@ -44,8 +46,6 @@ import org.glassfish.hk2.utilities.DescriptorImpl;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
 import org.jvnet.hk2.annotations.Contract;
 import org.jvnet.hk2.annotations.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import eu.infomas.annotation.AnnotationDetector;
 
 /**
@@ -73,7 +73,7 @@ import eu.infomas.annotation.AnnotationDetector;
  */
 public class HK2RuntimeInitializerCustom
 {
-	static Logger log = LoggerFactory.getLogger(HK2RuntimeInitializerCustom.class);
+	static Logger log = LogManager.getLogger(HK2RuntimeInitializerCustom.class);
 
 	/**
 	 * Scan the requested packages on the classpath for HK2 'Service' and 'Contract' annotated classes.
