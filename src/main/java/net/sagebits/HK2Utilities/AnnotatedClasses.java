@@ -36,9 +36,9 @@ import java.util.Hashtable;
 import java.util.List;
 import javax.inject.Named;
 import javax.inject.Singleton;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.hk2.utilities.DescriptorImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * AnnotatedClasses
@@ -47,7 +47,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AnnotatedClasses
 {
-	Logger log = LoggerFactory.getLogger(this.getClass());
+	Logger log = LogManager.getLogger(this.getClass());
 
 	private Hashtable<String, ClassInfo> annotations = new Hashtable<>();
 

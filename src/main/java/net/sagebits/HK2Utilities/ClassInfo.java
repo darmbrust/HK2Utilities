@@ -31,14 +31,14 @@ package net.sagebits.HK2Utilities;
 
 import java.util.HashSet;
 import javax.inject.Singleton;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.hk2.api.PerLookup;
 import org.glassfish.hk2.api.PerThread;
 import org.glassfish.hk2.api.Proxiable;
 import org.glassfish.hk2.api.Unproxiable;
 import org.jvnet.hk2.annotations.Contract;
 import org.jvnet.hk2.annotations.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * ClassInfo
@@ -50,7 +50,7 @@ public class ClassInfo
 	private String className_;
 	private HashSet<String> annotations_ = new HashSet<>();
 
-	Logger log = LoggerFactory.getLogger(this.getClass());
+	Logger log = LogManager.getLogger(this.getClass());
 
 	protected ClassInfo(String className)
 	{

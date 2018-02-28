@@ -1,6 +1,8 @@
 HK2Utilities
 ============
 
+[![Build Status](https://travis-ci.org/darmbrust/HK2Utilities.svg?branch=develop)](https://travis-ci.org/darmbrust/HK2Utilities) [![Dependency Status](https://www.versioneye.com/user/projects/5a83a8a10fb24f7034ac6399/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5a83a8a10fb24f7034ac6399)
+
 Runtime scanning and initializing utilities for HK2 so you don't have to rely on hk2-locator/default files created by the inhabitant-generator.
 
 To enable runtime scanning and HK2 configuration - near the beginning of your program - probably in the main(String[] args) method - do this:
@@ -14,7 +16,6 @@ Note - with versions of HK2 prior to 2.3.0, the default code above is impacted b
 HK2RuntimeInitializerCustom - which is not impacted by this bug - but it has other limitations.  See the javadoc for details.
 
 With HK2 2.3.0 and newer, the alternate implementation / workaround is no longer necessary.
-
 
 Release command looks like:
 

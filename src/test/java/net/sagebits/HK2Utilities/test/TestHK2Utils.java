@@ -34,12 +34,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import java.io.IOException;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.api.ServiceLocatorFactory;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -61,13 +57,6 @@ import net.sagebits.HK2Utilities.test.services.TestService3;
 @RunWith(JUnit4.class)
 public class TestHK2Utils
 {
-	@BeforeClass
-	public static void initialize()
-	{
-		BasicConfigurator.configure();
-		Logger.getRootLogger().setLevel(Level.DEBUG);
-	}
-
 	@Test
 	public void testPackageList() throws ClassNotFoundException, IOException
 	{

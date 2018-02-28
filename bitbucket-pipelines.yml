@@ -1,0 +1,9 @@
+image: maven:3.5-jdk-7
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - maven
+        script:
+          - mvn -B -e clean verify
