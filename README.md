@@ -24,4 +24,4 @@ a GPG signing key (publicly registered).  See http://central.sonatype.org/pages/
 
 If you do not want to release to that repo, don't enable the publicRelease profile, and set the parameter -DnoDeploy
 
-mvn jgitflow:release-start jgitflow:release-finish -DreleaseVersion=1.5.2 -DdevelopmentVersion=1.5.3-SNAPSHOT -PpublicRelease
+mvn jgitflow:release-start jgitflow:release-finish -DreleaseVersion=1.5.3 -DdevelopmentVersion=1.5.4-SNAPSHOT -PpublicRelease
