@@ -85,16 +85,15 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<release>11</release>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
+				<version>3.2.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -159,7 +158,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>3.2.0</version>
 						<configuration>
 							<failOnError>false</failOnError>
 						</configuration>
@@ -181,7 +180,8 @@
 		<dependency>
 			<groupId>org.glassfish.hk2</groupId>
 			<artifactId>hk2</artifactId>
-			<version>2.5.0-b61</version>
+			<version>3.0.0-M2</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>eu.infomas</groupId>
@@ -191,20 +191,20 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
-			<version>2.10.0</version>
+			<version>2.13.3</version>
 		</dependency>
 
 		<!-- Test only dependencies -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.10.0</version>
+			<version>2.13.3</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.6.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

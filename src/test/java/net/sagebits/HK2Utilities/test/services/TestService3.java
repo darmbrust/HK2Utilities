@@ -29,7 +29,7 @@
  */
 package net.sagebits.HK2Utilities.test.services;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import org.glassfish.hk2.api.PerLookup;
 import org.jvnet.hk2.annotations.Service;
 

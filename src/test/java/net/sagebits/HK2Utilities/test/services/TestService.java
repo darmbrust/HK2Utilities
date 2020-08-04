@@ -29,7 +29,7 @@
  */
 package net.sagebits.HK2Utilities.test.services;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import org.jvnet.hk2.annotations.Service;
 
 /**

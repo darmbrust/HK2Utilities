@@ -1,4 +1,4 @@
-image: maven:3.5-jdk-7
+image: 3.6-openjdk-11
 
 pipelines:
   default:

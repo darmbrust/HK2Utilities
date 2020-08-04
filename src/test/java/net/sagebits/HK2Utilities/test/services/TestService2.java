@@ -29,8 +29,8 @@
  */
 package net.sagebits.HK2Utilities.test.services;
 
-import javax.inject.Named;
-import javax.inject.Singleton;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
 import org.jvnet.hk2.annotations.Service;
 
 /**
