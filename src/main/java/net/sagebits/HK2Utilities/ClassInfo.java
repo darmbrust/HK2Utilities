@@ -30,7 +30,7 @@
 package net.sagebits.HK2Utilities;
 
 import java.util.HashSet;
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.glassfish.hk2.api.PerLookup;

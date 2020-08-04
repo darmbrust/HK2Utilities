@@ -77,11 +77,6 @@ public class HK2RuntimeInitializer
 	 * Scan the requested packages on the classpath for HK2 'Service' and 'Contract' annotated classes.
 	 * Load the metadata for those classes into the HK2 Service Locator.
 	 * 
-	 * This implementation should support all Annotations that are supported by HK2 - however - if you are using
-	 * HK2 older than 2.3.0 - note that it is impacted by this bug: https://java.net/jira/browse/HK2-187
-	 * 
-	 * For an implementation that is not impacted by that bug, see {@link HK2RuntimeInitializerCustom}
-	 * 
 	 * @see org.glassfish.hk2.api.ServiceLocatorFactory#create(String)
 	 * @see ServiceLocatorUtilities#createAndPopulateServiceLocator(String)
 	 * 
